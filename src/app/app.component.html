@@ -1,0 +1,28 @@
+<ng-container *ngIf="isLoaded$ | async; else loading">
+  <header class="main-header">
+    <nav class="nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        {{ 'nav.home' | translate }}
+      </a>
+      <a routerLink="/projects" routerLinkActive="active">
+        {{ 'nav.projects' | translate }}
+      </a>
+      <a routerLink="/about" routerLinkActive="active">
+        {{ 'nav.about' | translate }}
+      </a>
+      <a routerLink="/contact" routerLinkActive="active">
+        {{ 'nav.contact' | translate }}
+      </a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</ng-container>
+
+<ng-template #loading>
+  <main class="main-content">
+    <p>Cargando contenido…</p>
+  </main>
+</ng-template>

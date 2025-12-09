@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== MAIN ===== */
+
+.l-main {
+  flex: 1;
+  padding-block: 2rem 3rem;
+}
+
+/* por si quisieras hacer algo con el outlet más adelante */
+.l-main__outlet {
+  display: block;
+}
+
+/* ===== FOOTER ===== */
+
+.l-footer {
+  padding: 1rem 1.5rem 1.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--color-text-soft);
+  border-top: 1px solid var(--color-border-subtle);
+  background: #05060a;
+}
+
+.l-footer__text {
+  margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 640px) {
+  .l-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

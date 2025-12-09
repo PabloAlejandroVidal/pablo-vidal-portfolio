@@ -1,0 +1,55 @@
+<div class="c-lang-switcher" [class.c-lang-switcher--open]="isOpen">
+  <button
+    type="button"
+    class="c-lang-switcher__trigger"
+    (click)="toggleMenu()"
+  >
+    <ng-container *ngIf="currentLangOption?.icon; else emojiFlag">
+      <img
+        [src]="currentLangOption!.icon!"
+        class="c-lang-switcher__flag-img"
+        alt="flag"
+      />
+    </ng-container>
+
+    <ng-template #emojiFlag>
+      <span class="c-lang-switcher__flag">
+        {{ currentLangOption?.flag || '🌐' }}
+      </span>
+    </ng-template>
+
+    <span class="c-lang-switcher__code">
+      {{ currentLang.toUpperCase() }}
+    </span>
+
+    <span class="c-lang-switcher__chevron">▾</span>
+  </button>
+
+  <!-- <div class="cont"></div> -->
+
+  <ul class="c-lang-switcher__menu" *ngIf="isOpen">
+    <li
+      *ngFor="let lang of languages"
+      class="c-lang-switcher__item"
+      [class.c-lang-switcher__item--active]="lang.code === currentLang"
+      (click)="selectLang(lang.code)"
+    >
+      <ng-container *ngIf="lang.icon; else emojiItem">
+        <img
+          [src]="lang.icon"
+          class="c-lang-switcher__flag-img"
+          alt="flag"
+        />
+      </ng-container>
+
+      <ng-template #emojiItem>
+        <span class="c-lang-switcher__flag">{{ lang.flag }}</span>
+      </ng-template>
+
+      <span class="c-lang-switcher__label">{{ lang.label }}</span>
+      <span class="c-lang-switcher__code-small">
+        {{ lang.code.toUpperCase() }}
+      </span>
+    </li>
+  </ul>
+</div>

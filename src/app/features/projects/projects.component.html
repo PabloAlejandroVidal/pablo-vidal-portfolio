@@ -1,4 +1,15 @@
-<section class="page">
-  <h1>{{ 'projects.title' | translate }}</h1>
-  <p>{{ 'projects.subtitle' | translate }}</p>
+<section class="projects u-page">
+  <h1 class="u-page__title">
+    {{ 'projects.title' | translate }}
+  </h1>
+
+  <p class="u-page__subtitle">
+    {{ 'projects.subtitle' | translate }}
+  </p>
+
+  <div class="projects__placeholder c-card c-card--soft u-mt-md">
+    <p class="u-text-soft">
+      {{ 'projects.empty.helper' | translate }}
+    </p>
+  </div>
 </section>

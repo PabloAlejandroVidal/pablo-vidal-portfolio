@@ -1,7 +1,40 @@
-<section class="home">
-  <h1>{{ 'home.hero.title' | translate }}</h1>
-  <p>{{ 'home.hero.subtitle' | translate }}</p>
-  <a routerLink="/projects">
-    {{ 'projects.title' | translate }}
-  </a>
+<section class="home u-page">
+  <div class="home__hero">
+    <p class="home__kicker u-text-accent">
+      {{ 'home.hero.kicker' | translate }}
+    </p>
+
+    <h1 class="home__title u-page__title">
+      {{ 'home.hero.title' | translate }}
+    </h1>
+
+    <p class="home__subtitle u-page__subtitle">
+      {{ 'home.hero.subtitle' | translate }}
+    </p>
+
+    <div class="home__actions">
+      <a
+        routerLink="/projects"
+        class="u-btn u-btn--primary home__action"
+      >
+        {{ 'home.hero.cta.projects' | translate }}
+      </a>
+
+      <a
+        routerLink="/contact"
+        class="u-btn u-btn--ghost home__action"
+      >
+        {{ 'home.hero.cta.contact' | translate }}
+      </a>
+    </div>
+  </div>
+
+  <div class="home__highlight c-card">
+    <h2 class="c-card__title">
+      {{ 'home.highlight.title' | translate }}
+    </h2>
+    <p class="c-card__subtitle">
+      {{ 'home.highlight.body' | translate }}
+    </p>
+  </div>
 </section>

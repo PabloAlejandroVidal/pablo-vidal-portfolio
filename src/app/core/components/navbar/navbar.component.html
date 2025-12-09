@@ -1,0 +1,112 @@
+<header class="l-header">
+  <div class="l-header__brand">
+    <a routerLink="/" class="l-header__brand-link">
+      <div class="l-header__brand-mark-container">
+        <div class="l-header__brand-mark"></div>
+        <div class="l-header__brand-mark-inner">PV</div>
+      </div>
+      <span class="l-header__brand-text">Pablo Vidal</span>
+    </a>
+  </div>
+
+  <!-- Botón hamburguesa (mobile) -->
+  <button
+    type="button"
+    class="l-header__toggle"
+    (click)="isNavOpen = !isNavOpen"
+    aria-label="Toggle navigation"
+  >
+    <span class="l-header__toggle-bar"></span>
+    <span class="l-header__toggle-bar"></span>
+    <span class="l-header__toggle-bar"></span>
+  </button>
+
+  <!-- NAV DESKTOP -->
+  <nav class="l-nav l-nav--desktop">
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="l-nav__item"
+      (click)="closeNav()"
+    >
+      {{ 'nav.home' | translate }}
+    </a>
+
+    <a
+      routerLink="/projects"
+      routerLinkActive="active"
+      class="l-nav__item"
+      (click)="closeNav()"
+    >
+      {{ 'nav.projects' | translate }}
+    </a>
+
+    <a
+      routerLink="/about"
+      routerLinkActive="active"
+      class="l-nav__item"
+      (click)="closeNav()"
+    >
+      {{ 'nav.about' | translate }}
+    </a>
+
+    <a
+      routerLink="/contact"
+      routerLinkActive="active"
+      class="l-nav__item"
+      (click)="closeNav()"
+    >
+      {{ 'nav.contact' | translate }}
+    </a>
+  </nav>
+
+  <!-- Acciones desktop -->
+  <div class="l-header__actions">
+    <app-language-switcher></app-language-switcher>
+  </div>
+</header>
+
+<!-- NAV MOBILE -->
+<nav class="l-nav l-nav--mobile" *ngIf="isNavOpen">
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="l-nav__item"
+    (click)="closeNav()"
+  >
+    {{ 'nav.home' | translate }}
+  </a>
+
+  <a
+    routerLink="/projects"
+    routerLinkActive="active"
+    class="l-nav__item"
+    (click)="closeNav()"
+  >
+    {{ 'nav.projects' | translate }}
+  </a>
+
+  <a
+    routerLink="/about"
+    routerLinkActive="active"
+    class="l-nav__item"
+    (click)="closeNav()"
+  >
+    {{ 'nav.about' | translate }}
+  </a>
+
+  <a
+    routerLink="/contact"
+    routerLinkActive="active"
+    class="l-nav__item"
+    (click)="closeNav()"
+  >
+    {{ 'nav.contact' | translate }}
+  </a>
+
+  <div class="l-nav__mobile-extra">
+    <app-language-switcher></app-language-switcher>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+.home {
+  /* u-page ya trae display/grid/spacing global */
+  /* acá afinamos solo lo específico */
+  &__hero {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  &__kicker {
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    /* extra por si querés reforzar algo específico */
+  }
+
+  &__subtitle {
+    /* ya tiene u-page__subtitle, podés sumar ajustes */
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  &__action {
+    /* margen fino, por si después querés diferenciar entre botones */
+  }
+
+  &__highlight {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Responsive específico de home, si lo necesitás */
+@media (max-width: 640px) {
+  .home__hero {
+    gap: 0.9rem;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "app.title": "Pablo Vidals portefølje",
+
+  "nav.home": "Hjem",
+  "nav.projects": "Prosjekter",
+  "nav.about": "Om meg",
+  "nav.contact": "Kontakt",
+
+  "home.hero.kicker": "Fullstack-utvikler",
+  "home.hero.title": "Hei, jeg er Pablo, en fullstack-utvikler.",
+  "home.hero.subtitle": "Jeg bygger web- og mobilapplikasjoner med Angular, TypeScript og gode utviklingspraksiser.",
+  "home.hero.cta.projects": "Se prosjekter",
+  "home.hero.cta.contact": "Kontakt meg",
+
+  "home.highlight.title": "Hva du finner her",
+  "home.highlight.body": "Utvalgte prosjekter, akademisk arbeid og eksperimenter jeg har bygget mens jeg lærer og utvikler meg.",
+
+  "projects.title": "Prosjekter",
+  "projects.subtitle": "Noen av prosjektene og eksperimentene jeg har jobbet med.",
+  "projects.empty.helper": "Jeg kommer til å legge til flere prosjekter og eksperimenter her etter hvert som de blir publisert.",
+
+  "about.title": "Om meg",
+  "about.body": "Jeg er en fullstack-utvikler med fokus på JavaScript/TypeScript, Angular og erfaring fra både akademiske og personlige prosjekter.",
+  "about.extra": "Jeg ønsker å bygge gjennomtenkte, vedlikeholdbare løsninger med en god brukeropplevelse.",
+
+  "contact.title": "Kontakt",
+  "contact.body": "Du kan kontakte meg via e-post eller gjennom mine profesjonelle profiler.",
+  "contact.email.label": "E-post",
+  "contact.github.label": "GitHub",
+  "contact.linkedin.label": "LinkedIn"
+}

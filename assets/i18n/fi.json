@@ -1,0 +1,31 @@
+{
+  "app.title": "Pablo Vidalin portfolio",
+
+  "nav.home": "Etusivu",
+  "nav.projects": "Projektit",
+  "nav.about": "Tietoa minusta",
+  "nav.contact": "Yhteystiedot",
+
+  "home.hero.kicker": "Fullstack-kehittäjä",
+  "home.hero.title": "Hei, olen Pablo, fullstack-kehittäjä.",
+  "home.hero.subtitle": "Rakennan web- ja mobiilisovelluksia Angularilla, TypeScriptillä ja hyvillä käytännöillä.",
+  "home.hero.cta.projects": "Katso projektit",
+  "home.hero.cta.contact": "Ota yhteyttä",
+
+  "home.highlight.title": "Mitä täältä löytyy",
+  "home.highlight.body": "Valikoituja projekteja, akateemisia töitä ja kokeiluja, joita olen tehnyt oppiessani ja kehittyessäni.",
+
+  "projects.title": "Projektit",
+  "projects.subtitle": "Joidenkin projektien ja kokeilujen esittely.",
+  "projects.empty.helper": "Lisään tänne uusia projekteja ja kokeiluja sitä mukaa, kun julkaisen niitä.",
+
+  "about.title": "Tietoa minusta",
+  "about.body": "Olen fullstack-kehittäjä, joka keskittyy JavaScriptiin/TypeScriptiin, Angulariin ja akateemisten sekä omien projektien kokemukseen.",
+  "about.extra": "Haluan luoda hyvin suunniteltuja, ylläpidettäviä ja käyttäjäystävällisiä ratkaisuja.",
+
+  "contact.title": "Yhteystiedot",
+  "contact.body": "Voit ottaa minuun yhteyttä sähköpostitse tai ammatillisten profiilieni kautta.",
+  "contact.email.label": "Sähköposti",
+  "contact.github.label": "GitHub",
+  "contact.linkedin.label": "LinkedIn"
+}

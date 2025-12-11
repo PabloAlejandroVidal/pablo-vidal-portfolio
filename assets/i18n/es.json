@@ -18,6 +18,51 @@
   "projects.title": "Proyectos",
   "projects.subtitle": "Algunos de los trabajos y experimentos que estuve desarrollando.",
   "projects.empty.helper": "Acá voy a ir agregando proyectos y experimentos a medida que los vaya publicando.",
+  "projects.common.role": "Rol",
+  "projects.common.context": "Contexto",
+  "projects.common.responsibilities": "Responsabilidades",
+
+  "projects.actions.viewLive": "Ver proyecto",
+  "projects.actions.viewRepo": "Ver repositorio",
+  "projects.actions.moreInfo": "Más información",
+
+  "projects.detail.backToList": "Volver a proyectos",
+  "projects.detail.problem": "Problema",
+  "projects.detail.solution": "Solución",
+  "projects.detail.responsibilities": "Responsabilidades",
+  "projects.detail.tech": "Tecnologías",
+  "projects.detail.notFound": "Proyecto no encontrado.",
+
+  "projects.items.debAndLopers.title": "Deb&Lopers - Sistema de gestión de restaurante",
+  "projects.items.debAndLopers.shortDescription": "Sistema integral para gestionar mesas, pedidos, cocina, mozos y experiencia móvil del cliente.",
+  "projects.items.debAndLopers.role": "Desarrollador fullstack",
+  "projects.items.debAndLopers.context": "Proyecto académico (UTN · PPS) con foco en experiencia móvil y arquitectura limpia.",
+  "projects.items.debAndLopers.responsibilities": "Diseño de la arquitectura, modelado de base de datos, desarrollo de módulos front y back, integración con Supabase y notificaciones.",
+  "projects.items.debAndLopers.detail.problem": "El objetivo era reemplazar procesos manuales de toma de pedidos y coordinación entre mozos y cocina por un sistema centralizado y en tiempo real.",
+  "projects.items.debAndLopers.detail.solution": "Implementé una app móvil en Ionic/Angular conectada a Supabase, con manejo de estados de pedidos, asignación de mesas, flujos de pago y notificaciones.",
+  "projects.items.debAndLopers.detail.responsibilities": "Me encargué de definir el modelo de datos, implementar servicios front, triggers en la base para eventos críticos (estados de pedidos, pagos, visitas), y diseñar la UX para mozos y clientes.",
+
+  "projects.items.clinicaOnline.title": "Clínica Online - Sistema de gestión médica",
+  "projects.items.clinicaOnline.shortDescription": "Aplicación para gestionar turnos, pacientes, especialistas, historia clínica y administración interna.",
+  "projects.items.clinicaOnline.role": "Desarrollador fullstack",
+  "projects.items.clinicaOnline.context": "Proyecto académico con énfasis en escalabilidad, modularización y seguridad.",
+  "projects.items.clinicaOnline.responsibilities": "Diseño del modelo de datos, implementación de módulos de turnos y pacientes, manejo de sesiones y permisos, validación, accesibilidad y flujos administrativos.",
+
+  "projects.items.salaDeJuegos.title": "Sala de Juegos - Aplicación lúdica con ranking y múltiples dinámicas",
+  "projects.items.salaDeJuegos.shortDescription": "Juego interactivo con múltiples modalidades (Preguntados, Ahorcado, Mayor-Menor) con ranking y puntuaciones en tiempo real.",
+  "projects.items.salaDeJuegos.role": "Desarrollador front-end",
+  "projects.items.salaDeJuegos.context": "Proyecto académico orientado a diseño de interfaces y manejo de estado con Firebase.",
+  "projects.items.salaDeJuegos.responsibilities": "Implementación de dinámicas de juego, manejo de rankings con Firestore, optimización de performance, animaciones y experiencia de usuario.",
+
+  "projects.items.portfolio.title": "Portfolio profesional",
+  "projects.items.portfolio.shortDescription": "Sitio web personal desarrollado para presentar proyectos, trayectoria, contacto y experiencia.",
+  "projects.items.portfolio.role": "Desarrollador front-end",
+  "projects.items.portfolio.context": "Proyecto personal publicado con GitHub Pages.",
+  "projects.items.portfolio.responsibilities": "Diseño, UX/UI, arquitectura del sitio, sistema de traducciones personalizado, optimización para móviles y SEO.",
+
+
+
+
 
   "about.title": "Sobre mí",
   "about.body": "Soy desarrollador fullstack con foco en JavaScript/TypeScript, Angular y experiencia académica y personal en varios proyectos.",

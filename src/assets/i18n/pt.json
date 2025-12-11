@@ -1,0 +1,31 @@
+{
+  "app.title": "Portfólio de Pablo Vidal",
+
+  "nav.home": "Início",
+  "nav.projects": "Projetos",
+  "nav.about": "Sobre mim",
+  "nav.contact": "Contato",
+
+  "home.hero.kicker": "Desenvolvedor fullstack",
+  "home.hero.title": "Olá, sou Pablo, desenvolvedor fullstack.",
+  "home.hero.subtitle": "Crio aplicações web e móveis com Angular, TypeScript e boas práticas.",
+  "home.hero.cta.projects": "Ver projetos",
+  "home.hero.cta.contact": "Entrar em contato",
+
+  "home.highlight.title": "O que você vai encontrar aqui",
+  "home.highlight.body": "Projetos selecionados, trabalhos acadêmicos e experimentos que desenvolvi enquanto aprendo e evoluo.",
+
+  "projects.title": "Projetos",
+  "projects.subtitle": "Alguns dos trabalhos e experimentos que venho desenvolvendo.",
+  "projects.empty.helper": "Vou adicionar novos projetos e experimentos aqui à medida que forem publicados.",
+
+  "about.title": "Sobre mim",
+  "about.body": "Sou desenvolvedor fullstack focado em JavaScript/TypeScript, Angular e experiência prática em projetos acadêmicos e pessoais.",
+  "about.extra": "Busco criar soluções bem planejadas, sustentáveis e com uma boa experiência de uso.",
+
+  "contact.title": "Contato",
+  "contact.body": "Você pode entrar em contato por email ou pelos meus perfis profissionais.",
+  "contact.email.label": "Email",
+  "contact.github.label": "GitHub",
+  "contact.linkedin.label": "LinkedIn"
+}

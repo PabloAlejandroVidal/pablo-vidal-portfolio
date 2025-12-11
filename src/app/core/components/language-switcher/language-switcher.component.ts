@@ -58,9 +58,19 @@ export class LanguageSwitcherComponent implements OnDestroy {
     }
 
     this.isChanging = true;
-    await this.translation.loadLanguage(lang);
-    this.isOpen = false;
+
+    try {
+      await this.translation.loadLanguage(lang);
+    } catch (err) {
+      console.error('[LanguageSwitcher] Error al cambiar idioma', err);
+      // el servicio ya hace fallback, acá solo registramos si queremos
+    } finally {
+      // Nos aseguramos de que el UI no quede trabado
+      this.isChanging = false;
+      this.isOpen = false;
+    }
   }
+
 
   get currentLangOption(): LangOption | undefined {
     return this.languages.find((l) => l.code === this.currentLang);

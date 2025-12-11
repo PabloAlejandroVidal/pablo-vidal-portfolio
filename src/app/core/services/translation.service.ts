@@ -11,17 +11,18 @@ export type LangCode = 'es' | 'en' | 'pt' | 'fr' | 'fi' | 'no';
   providedIn: 'root',
 })
 export class TranslationService {
-  // Ahora el BehaviorSubject tipado correctamente
-  private currentLang$ = new BehaviorSubject<LangCode>('es');
+  private readonly defaultLang: LangCode = 'es';
+
+  private currentLang$ = new BehaviorSubject<LangCode>(this.defaultLang);
   private translations: Translations = {};
   private loaded$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    this.loadLanguage('es');
+    // Cargamos el idioma por defecto al inicio
+    this.loadLanguage(this.defaultLang);
   }
 
   get languageChanges$() {
-    // Devuelve observable con tipo LangCode
     return this.currentLang$.asObservable();
   }
 
@@ -33,16 +34,46 @@ export class TranslationService {
     return this.currentLang$.value;
   }
 
+  private async fetchTranslations(lang: LangCode): Promise<Translations> {
+    return await firstValueFrom(
+      this.http.get<Translations>(`assets/i18n/${lang}.json`)
+    );
+  }
+
   async loadLanguage(lang: LangCode): Promise<void> {
     this.loaded$.next(false);
 
-    const data = await firstValueFrom(
-      this.http.get<Translations>(`assets/i18n/${lang}.json`)
-    );
+    try {
+      // 1) Intentar cargar el idioma solicitado
+      const data = await this.fetchTranslations(lang);
+      this.translations = data;
+      this.currentLang$.next(lang);
+    } catch (error) {
+      console.warn(
+        `[TranslationService] No se pudo cargar el idioma "${lang}".`,
+        error
+      );
 
-    this.translations = data;
-    this.currentLang$.next(lang);
-    this.loaded$.next(true);
+      // 2) Intentar fallback SOLO si no es ya el idioma por defecto
+      if (lang !== this.defaultLang) {
+        try {
+          console.info(
+            `[TranslationService] Usando idioma por defecto "${this.defaultLang}" como fallback.`
+          );
+          const fallback = await this.fetchTranslations(this.defaultLang);
+          this.translations = fallback;
+          this.currentLang$.next(this.defaultLang);
+        } catch (fallbackError) {
+          console.error(
+            `[TranslationService] También falló el fallback "${this.defaultLang}". Mantengo traducciones anteriores.`,
+            fallbackError
+          );
+          // acá NO cambiamos translations ni currentLang
+        }
+      }
+    } finally {
+      this.loaded$.next(true);
+    }
   }
 
   t(key: string): string {

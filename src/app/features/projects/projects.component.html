@@ -7,9 +7,81 @@
     {{ 'projects.subtitle' | translate }}
   </p>
 
-  <div class="projects__placeholder c-card c-card--soft u-mt-md">
-    <p class="u-text-soft">
-      {{ 'projects.empty.helper' | translate }}
-    </p>
+  <!-- Lista -->
+  <div class="projects__list u-mt-md" *ngIf="projects.length; else empty">
+
+    <article class="projects__item c-card c-card--soft" *ngFor="let p of projects">
+
+      <!-- Cabecera -->
+      <header class="projects__item-header">
+        <h2 class="projects__item-title">
+          {{ p.titleKey | translate }}
+        </h2>
+        <span class="projects__item-year">{{ p.year }}</span>
+      </header>
+
+      <!-- Descripción corta -->
+      <p class="projects__item-description">
+        {{ p.shortDescriptionKey | translate }}
+      </p>
+
+      <!-- Meta info -->
+      <p class="projects__item-meta">
+        <strong>{{ 'projects.common.role' | translate }}:</strong>
+        {{ p.roleKey | translate }}
+
+        <span class="projects__item-meta-separator">•</span>
+
+        <strong>{{ 'projects.common.context' | translate }}:</strong>
+        {{ p.contextKey | translate }}
+      </p>
+
+      <!-- Responsabilidades -->
+      <p class="projects__item-resp">
+        <strong>{{ 'projects.common.responsibilities' | translate }}:</strong>
+        {{ p.responsibilitiesKey | translate }}
+      </p>
+
+      <!-- Tech stack -->
+      <div class="projects__item-tags">
+        <span class="projects__tag" *ngFor="let tech of p.techStack">{{ tech }}</span>
+      </div>
+
+      <!-- Botones -->
+      <footer class="projects__item-footer">
+
+        <a *ngIf="p.liveUrl"
+           class="c-button c-button--ghost"
+           [href]="p.liveUrl"
+           target="_blank">
+          {{ 'projects.actions.viewLive' | translate }}
+        </a>
+
+        <a *ngIf="p.repoUrl"
+           class="c-button c-button--ghost"
+           [href]="p.repoUrl"
+           target="_blank">
+          {{ 'projects.actions.viewRepo' | translate }}
+        </a>
+
+        <a class="c-button c-button--primary"
+           [routerLink]="['/projects', p.id]">
+          {{ 'projects.actions.moreInfo' | translate }}
+        </a>
+
+      </footer>
+
+    </article>
+
   </div>
+
+  <!-- Vacío -->
+  <ng-template #empty>
+    <div class="projects__placeholder c-card c-card--soft u-mt-md">
+      <p class="u-text-soft">
+        {{ 'projects.empty.helper' | translate }}
+      </p>
+    </div>
+  </ng-template>
 </section>
+

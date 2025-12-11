@@ -1,0 +1,87 @@
+<section class="project-detail u-page" *ngIf="project; else notFound">
+  <a routerLink="/projects" class="project-detail__back-link">
+    ← {{ 'projects.detail.backToList' | translate }}
+  </a>
+
+  <header class="project-detail__header">
+    <h1 class="u-page__title">
+      {{ project.titleKey | translate }}
+    </h1>
+    <p class="project-detail__meta">
+      <span>{{ project.year }}</span>
+      <span class="project-detail__meta-separator">•</span>
+      <span>{{ project.roleKey | translate }}</span>
+      <span class="project-detail__meta-separator">•</span>
+      <span>{{ project.contextKey | translate }}</span>
+    </p>
+  </header>
+
+  <section class="project-detail__section">
+    <h2 class="project-detail__subtitle">
+      {{ 'projects.detail.problem' | translate }}
+    </h2>
+    <p>
+      {{ ('projects.items.' + project.id + '.detail.problem') | translate }}
+    </p>
+  </section>
+
+  <section class="project-detail__section">
+    <h2 class="project-detail__subtitle">
+      {{ 'projects.detail.solution' | translate }}
+    </h2>
+    <p>
+      {{ ('projects.items.' + project.id + '.detail.solution') | translate }}
+    </p>
+  </section>
+
+  <section class="project-detail__section">
+    <h2 class="project-detail__subtitle">
+      {{ 'projects.detail.responsibilities' | translate }}
+    </h2>
+    <p>
+      {{ ('projects.items.' + project.id + '.detail.responsibilities') | translate }}
+    </p>
+  </section>
+
+  <section class="project-detail__section">
+    <h2 class="project-detail__subtitle">
+      {{ 'projects.detail.tech' | translate }}
+    </h2>
+    <div class="project-detail__tags">
+      <span *ngFor="let tech of project.techStack" class="projects__tag">
+        {{ tech }}
+      </span>
+    </div>
+  </section>
+
+  <footer class="project-detail__footer">
+    <a
+      *ngIf="project.liveUrl"
+      class="c-button c-button--primary"
+      [href]="project.liveUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {{ 'projects.actions.viewLive' | translate }}
+    </a>
+
+    <a
+      *ngIf="project.repoUrl"
+      class="c-button c-button--ghost"
+      [href]="project.repoUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {{ 'projects.actions.viewRepo' | translate }}
+    </a>
+  </footer>
+</section>
+
+<ng-template #notFound>
+  <section class="project-detail u-page">
+    <p>{{ 'projects.detail.notFound' | translate }}</p>
+    <a routerLink="/projects" class="c-button c-button--primary">
+      {{ 'projects.detail.backToList' | translate }}
+    </a>
+  </section>
+</ng-template>

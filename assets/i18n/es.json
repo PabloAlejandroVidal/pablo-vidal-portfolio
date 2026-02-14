@@ -38,9 +38,10 @@
   "projects.items.debAndLopers.role": "Desarrollador fullstack",
   "projects.items.debAndLopers.context": "Proyecto académico (UTN · PPS) enfocado en arquitectura, validaciones backend y experiencia móvil.",
   "projects.items.debAndLopers.responsibilities": "Modelado del flujo de pedidos como máquina de estados, implementación de control de acceso por roles, centralización de lógica en servicios y validaciones server-side para evitar transiciones inválidas.",
-  "projects.items.debAndLopers.detail.problem": "El desafío principal era coordinar múltiples actores (cliente, mozo y cocina) evitando inconsistencias en el flujo de pedidos. Sin reglas claras, un pedido podía quedar en estados inválidos, duplicarse o avanzar sin validación adecuada.",
-  "projects.items.debAndLopers.detail.solution": "Modelé el flujo de pedidos como una máquina de estados con transiciones explícitas y controladas. Cada cambio de estado se valida en backend, garantizando coherencia entre roles y evitando manipulaciones desde el frontend.",
-  "projects.items.debAndLopers.detail.responsibilities": "Definí el modelo de datos y las reglas de transición de estados, centralicé la lógica de negocio en servicios como única fuente de verdad y estructuré el acceso por roles con responsabilidades claramente delimitadas entre frontend y backend.",
+
+  "projects.items.deb-and-lopers.detail.problem": "El desafío principal era coordinar múltiples actores (cliente, mozo y cocina) evitando inconsistencias en el flujo de pedidos. Sin reglas claras, un pedido podía quedar en estados inválidos, duplicarse o avanzar sin validación adecuada.",
+  "projects.items.deb-and-lopers.detail.solution": "Modelé el flujo de pedidos como una máquina de estados con transiciones explícitas y controladas. Cada cambio de estado se valida en backend, garantizando coherencia entre roles y evitando manipulaciones desde el frontend.",
+  "projects.items.deb-and-lopers.detail.responsibilities": "Definí el modelo de datos y las reglas de transición de estados, centralicé la lógica de negocio en servicios como única fuente de verdad y estructuré el acceso por roles con responsabilidades claramente delimitadas entre frontend y backend.",
 
   "projects.items.clinicaOnline.title": "Clínica Online - Sistema de gestión médica",
   "projects.items.clinicaOnline.shortDescription": "Aplicación fullstack para gestión de turnos y pacientes con control de permisos y validaciones estructuradas.",

@@ -1,30 +1,73 @@
 {
-  "app.title": "Pablo Vidal’s Portfolio",
+  "app.title": "Pablo Vidal Portfolio",
 
   "nav.home": "Home",
   "nav.projects": "Projects",
-  "nav.about": "About me",
+  "nav.about": "About",
   "nav.contact": "Contact",
 
-  "home.hero.kicker": "Full-stack developer",
-  "home.hero.title": "Hi, I'm Pablo, a full-stack developer.",
-  "home.hero.subtitle": "I build web and mobile applications with Angular, TypeScript and good development practices.",
+  "home.hero.kicker": "Full-Stack Developer focused on end-to-end systems",
+  "home.hero.title": "Hi, I'm Pablo.",
+  "home.hero.subtitle": "I build web and mobile applications covering frontend, backend, and database layers, with a strong focus on clear structure, solid validations, and overall system consistency.",
   "home.hero.cta.projects": "View projects",
   "home.hero.cta.contact": "Contact me",
 
-  "home.highlight.title": "What you’ll find here",
-  "home.highlight.body": "Selected projects, academic work and experiments I've built while learning and improving.",
+  "home.highlight.title": "What you'll find here",
+  "home.highlight.body": "Full-stack projects where I worked across the entire system lifecycle: domain modeling, state management, backend validations, and clear separation of responsibilities.",
 
   "projects.title": "Projects",
-  "projects.subtitle": "Some of the work and experiments I've been developing.",
-  "projects.empty.helper": "I'll keep adding projects and experiments here as I publish them.",
+  "projects.subtitle": "Applications built with a strong focus on structure, business flow, and clean architecture.",
+  "projects.empty.helper": "New projects will be added here as they are consolidated.",
 
-  "about.title": "About me",
-  "about.body": "I'm a full-stack developer focused on JavaScript/TypeScript, Angular, and hands-on experience in academic and personal projects.",
-  "about.extra": "I aim to build well-designed, maintainable solutions with a solid user experience.",
+  "projects.common.role": "Role",
+  "projects.common.context": "Context",
+  "projects.common.responsibilities": "Responsibilities",
+
+  "projects.actions.viewLive": "View demo",
+  "projects.actions.viewRepo": "View repository",
+  "projects.actions.moreInfo": "More information",
+
+  "projects.detail.backToList": "Back to projects",
+  "projects.detail.problem": "Problem",
+  "projects.detail.solution": "Solution",
+  "projects.detail.responsibilities": "Responsibilities",
+  "projects.detail.tech": "Technologies",
+  "projects.detail.notFound": "Project not found.",
+
+  "projects.items.debAndLopers.title": "Deb&Lopers – State-Driven Restaurant Management System",
+  "projects.items.debAndLopers.shortDescription": "Full-stack system with role-based access control and an order flow modeled as a state machine.",
+  "projects.items.debAndLopers.role": "Full-Stack Developer",
+  "projects.items.debAndLopers.context": "Academic project (UTN · PPS) focused on architecture, backend validations, and mobile experience.",
+  "projects.items.debAndLopers.responsibilities": "Modeled the order lifecycle as a state machine, implemented role-based access control, centralized business logic in services, and enforced server-side validations to prevent invalid state transitions.",
+
+  "projects.items.deb-and-lopers.detail.problem": "The main challenge was coordinating multiple actors (customer, waiter, and kitchen) while preventing inconsistencies in the order workflow. Without strict rules, orders could reach invalid states, be duplicated, or move forward without proper validation.",
+  "projects.items.deb-and-lopers.detail.solution": "I modeled the order lifecycle as an explicit state machine with controlled transitions. Every state change is validated on the backend, ensuring role consistency and preventing manipulation from the frontend.",
+  "projects.items.deb-and-lopers.detail.responsibilities": "Defined the data model and state transition rules, centralized business logic in services as the single source of truth, and structured role-based access with clearly separated frontend and backend responsibilities.",
+
+  "projects.items.clinicaOnline.title": "Online Clinic – Medical Management System",
+  "projects.items.clinicaOnline.shortDescription": "Full-stack application for appointment and patient management with structured permission control and validations.",
+  "projects.items.clinicaOnline.role": "Full-Stack Developer",
+  "projects.items.clinicaOnline.context": "Academic project focused on modularization, security, and separation of responsibilities.",
+  "projects.items.clinicaOnline.responsibilities": "Designed the data model, implemented session and permission control, enforced backend validations, and organized the system in a modular and maintainable structure.",
+
+  "projects.items.salaDeJuegos.title": "Game Room – Interactive Application with State Management",
+  "projects.items.salaDeJuegos.shortDescription": "Interactive application with multiple game modes and real-time ranking.",
+  "projects.items.salaDeJuegos.role": "Front-End Developer",
+  "projects.items.salaDeJuegos.context": "Academic project focused on frontend state management and user experience.",
+  "projects.items.salaDeJuegos.responsibilities": "Implemented game logic, synchronized data with Firestore, and optimized frontend state handling and performance.",
+
+  "projects.items.portfolio.title": "Professional Portfolio",
+  "projects.items.portfolio.shortDescription": "Personal website designed to present projects with a technical and structural focus.",
+  "projects.items.portfolio.role": "Front-End Developer",
+  "projects.items.portfolio.context": "Personal project deployed on GitHub Pages.",
+  "projects.items.portfolio.responsibilities": "Designed the site architecture, implemented a custom translation system, built a responsive layout, and structured content with a clean and scalable approach.",
+
+  "about.title": "About",
+  "about.body": "I am a full-stack developer focused on understanding systems holistically. I am particularly interested in proper domain modeling, separation of responsibilities, and building maintainable solutions.",
+  "about.extra": "I work with Angular and TypeScript, and I aim to deepen my expertise in structured backend development and architectural best practices.",
 
   "contact.title": "Contact",
-  "contact.body": "You can contact me by email or through my professional profiles.",
+  "contact.body": "You can reach me by email or through my professional profiles.",
   "contact.email.label": "Email",
   "contact.github.label": "GitHub",
   "contact.linkedin.label": "LinkedIn"

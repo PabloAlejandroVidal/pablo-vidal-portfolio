@@ -26,6 +26,16 @@ Incluye un diseño moderno, navegación fluida y componentes reutilizables.
 
 ---
 
+## Arquitectura
+
+* Estrategia OnPush para optimización de Change Detection.
+* Sistema de internacionalización personalizado con carga dinámica y caché.
+* Persistencia de preferencias de usuario (idioma).
+* Inicialización previa al bootstrap mediante APP_INITIALIZER.
+* Diseño modular y componentes reutilizables.
+
+---
+
 ## Cómo ejecutar el proyecto
 
 ### 1. Clonar el repositorio

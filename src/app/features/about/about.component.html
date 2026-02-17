@@ -1,13 +1,16 @@
+<ng-container *ngIf="language$ | async">
+</ng-container>
 <section class="about u-page">
   <h1 class="u-page__title">
-    {{ 'about.title' | translate }}
+    {{ translation.t('about.title') }}
   </h1>
 
   <p class="u-page__subtitle">
-    {{ 'about.body' | translate }}
+    {{ translation.t('about.body') }}
   </p>
 
   <p class="u-text-soft u-mt-md">
-    {{ 'about.extra' | translate }}
+    {{ translation.t('about.extra') }}
   </p>
 </section>
+

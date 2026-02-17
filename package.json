@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng build --configuration production --base-href \"/pablo-vidal-portfolio/\" && npx angular-cli-ghpages --dir=dist/pablo-vidal-portfolio/browser --branch=gh-pages"
-
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LangCode, TranslationService } from '../../services/translation.service';
 
@@ -68,6 +68,7 @@ export class LanguageSwitcherComponent implements OnDestroy {
       // Nos aseguramos de que el UI no quede trabado
       this.isChanging = false;
       this.isOpen = false;
+
     }
   }
 

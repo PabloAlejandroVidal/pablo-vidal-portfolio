@@ -1,86 +1,82 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, map } from 'rxjs';
 
 type Translations = Record<string, string>;
 
 // Tipos de idioma soportados
 export type LangCode = 'es' | 'en' | 'pt' | 'fr' | 'fi' | 'no';
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class TranslationService {
   private readonly defaultLang: LangCode = 'es';
+  private readonly storageKey = 'app_lang';
 
   private currentLang$ = new BehaviorSubject<LangCode>(this.defaultLang);
+
   private translations: Translations = {};
-  private loaded$ = new BehaviorSubject<boolean>(false);
+  private cache = new Map<LangCode, Translations>();
 
   constructor(private http: HttpClient) {
-    // Cargamos el idioma por defecto al inicio
-    this.loadLanguage(this.defaultLang);
+    const savedLang = this.getPersistedLang();
+    const initialLang = savedLang ?? this.defaultLang;
+
+    this.loadLanguage(initialLang);
   }
 
   get languageChanges$() {
     return this.currentLang$.asObservable();
   }
 
-  get isLoaded$() {
-    return this.loaded$.asObservable();
-  }
-
   get currentLanguage(): LangCode {
     return this.currentLang$.value;
   }
 
-  private async fetchTranslations(lang: LangCode): Promise<Translations> {
-    return await firstValueFrom(
-      this.http.get<Translations>(`assets/i18n/${lang}.json`)
-    );
+
+  private getPersistedLang(): LangCode | null {
+    const value = localStorage.getItem(this.storageKey);
+    return value as LangCode | null;
+  }
+
+  private persistLang(lang: LangCode) {
+    localStorage.setItem(this.storageKey, lang);
   }
 
   async loadLanguage(lang: LangCode): Promise<void> {
-    this.loaded$.next(false);
+    // Evitar recarga si ya estamos en ese idioma y tenemos datos
+    if (lang === this.currentLang$.value && this.cache.has(lang)) {
+      return;
+    }
+
+    // Cache en memoria
+    if (this.cache.has(lang)) {
+      this.translations = this.cache.get(lang)!;
+      this.currentLang$.next(lang);
+      this.persistLang(lang);
+      return;
+    }
 
     try {
-      // 1) Intentar cargar el idioma solicitado
-      const data = await this.fetchTranslations(lang);
-      this.translations = data;
+      await this.loadJson(lang);
       this.currentLang$.next(lang);
-    } catch (error) {
-      console.warn(
-        `[TranslationService] No se pudo cargar el idioma "${lang}".`,
-        error
+      this.persistLang(lang);
+    } catch {
+      if (lang !== this.defaultLang) {
+        await this.loadLanguage(this.defaultLang);
+      }
+    }
+  }
+
+  async loadJson(lang: LangCode) {
+    const data = await firstValueFrom(
+        this.http.get<Translations>(`assets/i18n/${lang}.json`)
       );
 
-      // 2) Intentar fallback SOLO si no es ya el idioma por defecto
-      if (lang !== this.defaultLang) {
-        try {
-          console.info(
-            `[TranslationService] Usando idioma por defecto "${this.defaultLang}" como fallback.`
-          );
-          const fallback = await this.fetchTranslations(this.defaultLang);
-          this.translations = fallback;
-          this.currentLang$.next(this.defaultLang);
-        } catch (fallbackError) {
-          console.error(
-            `[TranslationService] También falló el fallback "${this.defaultLang}". Mantengo traducciones anteriores.`,
-            fallbackError
-          );
-          // acá NO cambiamos translations ni currentLang
-        }
-      }
-    } finally {
-      this.loaded$.next(true);
-    }
+    this.cache.set(lang, data);
+    this.translations = data;
   }
 
   t(key: string): string {
-    if (!this.loaded$.value) {
-      return '';
-    }
-
     return this.translations[key] ?? key;
   }
+
 }

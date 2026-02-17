@@ -1,16 +1,18 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { PROJECTS, Project } from './projects.data';
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe],
+  imports: [CommonModule, RouterModule],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
 export class ProjectsComponent {
   projects: Project[] = PROJECTS;
+  public translation = inject(TranslationService);
+  readonly language$ = this.translation.languageChanges$;
 }

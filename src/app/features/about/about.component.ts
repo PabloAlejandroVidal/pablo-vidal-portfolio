@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
-import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { Component, inject } from '@angular/core';
+import { TranslationService } from '../../core/services/translation.service';
+import { map } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [TranslatePipe],
+  imports: [CommonModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {
+  public translation = inject(TranslationService);
+
+  readonly language$ = this.translation.languageChanges$;
 
 }

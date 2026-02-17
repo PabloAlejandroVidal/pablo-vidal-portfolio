@@ -1,16 +1,18 @@
+<ng-container *ngIf="language$ | async">
+</ng-container>
 <section class="contact u-page">
   <h1 class="u-page__title">
-    {{ 'contact.title' | translate }}
+    {{ translation.t('contact.title') }}
   </h1>
 
   <p class="u-page__subtitle">
-    {{ 'contact.body' | translate }}
+    {{ translation.t('contact.body') }}
   </p>
 
   <ul class="contact__list u-mt-md">
     <li class="contact__item">
       <span class="contact__label">
-        {{ 'contact.email.label' | translate }}:
+        {{ translation.t('contact.email.label') }}:
       </span>
       <a href="mailto:pabloalejandrovidal@gmail.com">
         pabloalejandrovidal&#64;gmail.com
@@ -19,7 +21,7 @@
 
     <li class="contact__item">
       <span class="contact__label">
-        {{ 'contact.github.label' | translate }}:
+        {{ translation.t('contact.github.label') }}:
       </span>
       <a href="https://github.com/PabloAlejandroVidal" target="_blank">
         github.com/PabloAlejandroVidal
@@ -28,7 +30,7 @@
 
     <li class="contact__item">
       <span class="contact__label">
-        {{ 'contact.linkedin.label' | translate }}:
+        {{ translation.t('contact.linkedin.label') }}:
       </span>
       <a
         href="https://www.linkedin.com/in/pablo-vidal-2970b6195/"

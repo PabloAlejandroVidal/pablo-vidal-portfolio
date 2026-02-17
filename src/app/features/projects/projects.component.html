@@ -1,10 +1,13 @@
-<section class="projects u-page">
+<ng-container *ngIf="language$ | async">
+</ng-container>
+
+  <section class="projects u-page">
   <h1 class="u-page__title">
-    {{ 'projects.title' | translate }}
+    {{ translation.t('projects.title') }}
   </h1>
 
   <p class="u-page__subtitle">
-    {{ 'projects.subtitle' | translate }}
+    {{ translation.t('projects.subtitle') }}
   </p>
 
   <!-- Lista -->
@@ -15,31 +18,31 @@
       <!-- Cabecera -->
       <header class="projects__item-header">
         <h2 class="projects__item-title">
-          {{ p.titleKey | translate }}
+          {{ translation.t(p.titleKey) }}
         </h2>
         <span class="projects__item-year">{{ p.year }}</span>
       </header>
 
       <!-- Descripción corta -->
       <p class="projects__item-description">
-        {{ p.shortDescriptionKey | translate }}
+        {{ translation.t(p.shortDescriptionKey) }}
       </p>
 
       <!-- Meta info -->
       <p class="projects__item-meta">
-        <strong>{{ 'projects.common.role' | translate }}:</strong>
-        {{ p.roleKey | translate }}
+        <strong>{{ translation.t('projects.common.role') }}:</strong>
+        {{ translation.t(p.roleKey) }}
 
         <span class="projects__item-meta-separator">•</span>
 
-        <strong>{{ 'projects.common.context' | translate }}:</strong>
-        {{ p.contextKey | translate }}
+        <strong>{{ translation.t('projects.common.context') }}:</strong>
+        {{ translation.t(p.contextKey) }}
       </p>
 
       <!-- Responsabilidades -->
       <p class="projects__item-resp">
-        <strong>{{ 'projects.common.responsibilities' | translate }}:</strong>
-        {{ p.responsibilitiesKey | translate }}
+        <strong>{{ translation.t('projects.common.responsibilities') }}:</strong>
+        {{ translation.t(p.responsibilitiesKey) }}
       </p>
 
       <!-- Tech stack -->
@@ -54,19 +57,19 @@
            class="c-button c-button--ghost"
            [href]="p.liveUrl"
            target="_blank">
-          {{ 'projects.actions.viewLive' | translate }}
+          {{ translation.t('projects.actions.viewLive') }}
         </a>
 
         <a *ngIf="p.repoUrl"
            class="c-button c-button--ghost"
            [href]="p.repoUrl"
            target="_blank">
-          {{ 'projects.actions.viewRepo' | translate }}
+          {{ translation.t('projects.actions.viewRepo') }}
         </a>
 
         <a class="c-button c-button--primary"
            [routerLink]="['/projects', p.id]">
-          {{ 'projects.actions.moreInfo' | translate }}
+          {{ translation.t('projects.actions.moreInfo') }}
         </a>
 
       </footer>
@@ -79,7 +82,7 @@
   <ng-template #empty>
     <div class="projects__placeholder c-card c-card--soft u-mt-md">
       <p class="u-text-soft">
-        {{ 'projects.empty.helper' | translate }}
+        {{ translation.t('projects.empty.helper') }}
       </p>
     </div>
   </ng-template>

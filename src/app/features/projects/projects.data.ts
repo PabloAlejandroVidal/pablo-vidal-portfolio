@@ -1,5 +1,5 @@
 // src/app/features/projects/projects.data.ts
-export type ProjectId = 'deb-and-lopers' | 'clinica-online' | 'portfolio' | 'sala-de-juegos';
+export type ProjectId = 'debAndLopers' | 'clinicaOnline' | 'portfolio' | 'salaDeJuegos';
 
 export interface Project {
   id: ProjectId;
@@ -18,7 +18,7 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'deb-and-lopers',
+    id: 'debAndLopers',
     titleKey: 'projects.items.debAndLopers.title',
     shortDescriptionKey: 'projects.items.debAndLopers.shortDescription',
     roleKey: 'projects.items.debAndLopers.role',
@@ -27,10 +27,10 @@ export const PROJECTS: Project[] = [
     year: '2025',
     techStack: ['Angular', 'Ionic', 'Supabase', 'Firebase', 'TypeScript'],
     liveUrl: 'laboratorio-4-13a5b.web.app',    // ajustás vos
-    repoUrl: 'https://github.com/tu-usuario/deb-and-lopers'
+    repoUrl: 'https://github.com/tu-usuario/debAndLopers'
   },
   {
-    id: 'clinica-online',
+    id: 'clinicaOnline',
     titleKey: 'projects.items.clinicaOnline.title',
     shortDescriptionKey: 'projects.items.clinicaOnline.shortDescription',
     roleKey: 'projects.items.clinicaOnline.role',
@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
     repoUrl: 'https://github.com/PabloAlejandroVidal/Labo4-C2-TP2'
   },
   {
-    id: 'sala-de-juegos',
+    id: 'salaDeJuegos',
     titleKey: 'projects.items.salaDeJuegos.title',
     shortDescriptionKey: 'projects.items.salaDeJuegos.shortDescription',
     roleKey: 'projects.items.salaDeJuegos.role',

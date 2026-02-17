@@ -1,15 +1,17 @@
+<ng-container *ngIf="language$ | async">
+</ng-container>
 <section class="home u-page">
   <div class="home__hero">
     <p class="home__kicker u-text-accent">
-      {{ 'home.hero.kicker' | translate }}
+      {{ translation.t('home.hero.kicker') }}
     </p>
 
     <h1 class="home__title u-page__title">
-      {{ 'home.hero.title' | translate }}
+      {{ translation.t('home.hero.title') }}
     </h1>
 
     <p class="home__subtitle u-page__subtitle">
-      {{ 'home.hero.subtitle' | translate }}
+      {{ translation.t('home.hero.subtitle') }}
     </p>
 
     <div class="home__actions">
@@ -17,24 +19,24 @@
         routerLink="/projects"
         class="u-btn u-btn--primary home__action"
       >
-        {{ 'home.hero.cta.projects' | translate }}
+        {{ translation.t('home.hero.cta.projects') }}
       </a>
 
       <a
         routerLink="/contact"
         class="u-btn u-btn--ghost home__action"
       >
-        {{ 'home.hero.cta.contact' | translate }}
+        {{ translation.t('home.hero.cta.contact') }}
       </a>
     </div>
   </div>
 
   <div class="home__highlight c-card">
     <h2 class="c-card__title">
-      {{ 'home.highlight.title' | translate }}
+      {{ translation.t('home.highlight.title') }}
     </h2>
     <p class="c-card__subtitle">
-      {{ 'home.highlight.body' | translate }}
+      {{ translation.t('home.highlight.body') }}
     </p>
   </div>
 </section>

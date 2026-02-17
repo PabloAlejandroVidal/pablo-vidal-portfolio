@@ -1,3 +1,5 @@
+<ng-container *ngIf="language$ | async">
+</ng-container>
 <header class="l-header">
   <div class="l-header__brand">
     <a routerLink="/" class="l-header__brand-link">
@@ -30,7 +32,7 @@
       class="l-nav__item"
       (click)="closeNav()"
     >
-      {{ 'nav.home' | translate }}
+      {{ translation.t('nav.home') }}
     </a>
 
     <a
@@ -39,7 +41,7 @@
       class="l-nav__item"
       (click)="closeNav()"
     >
-      {{ 'nav.projects' | translate }}
+      {{ translation.t('nav.projects') }}
     </a>
 
     <a
@@ -48,7 +50,7 @@
       class="l-nav__item"
       (click)="closeNav()"
     >
-      {{ 'nav.about' | translate }}
+      {{ translation.t('nav.about') }}
     </a>
 
     <a
@@ -57,7 +59,7 @@
       class="l-nav__item"
       (click)="closeNav()"
     >
-      {{ 'nav.contact' | translate }}
+      {{ translation.t('nav.contact') }}
     </a>
   </nav>
 
@@ -76,7 +78,7 @@
     class="l-nav__item"
     (click)="closeNav()"
   >
-    {{ 'nav.home' | translate }}
+    {{ translation.t('nav.home') }}
   </a>
 
   <a
@@ -85,7 +87,7 @@
     class="l-nav__item"
     (click)="closeNav()"
   >
-    {{ 'nav.projects' | translate }}
+    {{ translation.t('nav.projects') }}
   </a>
 
   <a
@@ -94,7 +96,7 @@
     class="l-nav__item"
     (click)="closeNav()"
   >
-    {{ 'nav.about' | translate }}
+    {{ translation.t('nav.about') }}
   </a>
 
   <a
@@ -103,7 +105,7 @@
     class="l-nav__item"
     (click)="closeNav()"
   >
-    {{ 'nav.contact' | translate }}
+    {{ translation.t('nav.contact') }}
   </a>
 
   <div class="l-nav__mobile-extra">

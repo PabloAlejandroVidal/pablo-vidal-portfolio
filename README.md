@@ -85,15 +85,6 @@ Settings → Pages → Branch: main → Folder: /docs
 
 ---
 
-### Firebase Hosting
-
-npm install -g firebase-tools
-firebase login
-firebase init
-firebase deploy
-
----
-
 ## Contacto
 
 * Email: [pabloalejandrovidal@gmail.com](mailto:pabloalejandrovidal@gmail.com)

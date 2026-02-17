@@ -21,10 +21,7 @@ export class LanguageSwitcherComponent implements OnDestroy {
   languages: LangOption[] = [
     { code: 'es', label: 'Español',          flag: '🇦🇷',  icon: 'https://flagicons.lipis.dev/flags/4x3/ar.svg' },
     { code: 'en', label: 'English',          flag: '🇬🇧',  icon: 'https://flagicons.lipis.dev/flags/4x3/gb.svg' },
-    { code: 'pt', label: 'Português',        flag: '🇧🇷',  icon: 'https://flagicons.lipis.dev/flags/4x3/br.svg' },
     { code: 'fr', label: 'Français',         flag: '🇫🇷',  icon: 'https://flagicons.lipis.dev/flags/4x3/fr.svg' },
-    { code: 'fi', label: 'Suomi',            flag: '🇫🇮',  icon: 'https://flagicons.lipis.dev/flags/4x3/fi.svg' },
-    { code: 'no', label: 'Norsk (Bokmål)',   flag: '🇳🇴',  icon: 'https://flagicons.lipis.dev/flags/4x3/no.svg' },
   ];
 
   currentLang: LangCode = 'es';

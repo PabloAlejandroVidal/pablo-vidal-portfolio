@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { TranslationService } from '../../core/services/translation.service';
   imports: [CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
   public translation = inject(TranslationService);

@@ -56,14 +56,16 @@
         <a *ngIf="p.liveUrl"
            class="c-button c-button--ghost"
            [href]="p.liveUrl"
-           target="_blank">
+           target="_blank"
+           rel="noopener noreferrer">
           {{ translation.t('projects.actions.viewLive') }}
         </a>
 
         <a *ngIf="p.repoUrl"
            class="c-button c-button--ghost"
            [href]="p.repoUrl"
-           target="_blank">
+           target="_blank"
+           rel="noopener noreferrer">
           {{ translation.t('projects.actions.viewRepo') }}
         </a>
 

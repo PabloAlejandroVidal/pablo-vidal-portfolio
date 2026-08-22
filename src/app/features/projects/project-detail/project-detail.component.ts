@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Project, PROJECTS } from '../projects.data';
 import { TranslationService } from '../../../core/services/translation.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-project-detail',

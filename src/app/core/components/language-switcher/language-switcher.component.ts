@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LangCode, TranslationService } from '../../services/translation.service';
 
@@ -16,12 +16,14 @@ interface LangOption {
   imports: [CommonModule],
   templateUrl: './language-switcher.component.html',
   styleUrls: ['./language-switcher.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSwitcherComponent implements OnDestroy {
   languages: LangOption[] = [
     { code: 'es', label: 'Español',          flag: '🇦🇷',  icon: 'https://flagicons.lipis.dev/flags/4x3/ar.svg' },
     { code: 'en', label: 'English',          flag: '🇬🇧',  icon: 'https://flagicons.lipis.dev/flags/4x3/gb.svg' },
     { code: 'fr', label: 'Français',         flag: '🇫🇷',  icon: 'https://flagicons.lipis.dev/flags/4x3/fr.svg' },
+    { code: 'no', label: 'Norsk',            flag: '🇳🇴',  icon: 'https://flagicons.lipis.dev/flags/4x3/no.svg' },
   ];
 
   currentLang: LangCode = 'es';
@@ -30,12 +32,16 @@ export class LanguageSwitcherComponent implements OnDestroy {
 
   private langSub = new Subscription();
 
-  constructor(private translation: TranslationService) {
+  constructor(
+    private translation: TranslationService,
+    private cdr: ChangeDetectorRef,
+  ) {
     this.currentLang = this.translation.currentLanguage;
 
     this.langSub = this.translation.languageChanges$.subscribe((lang) => {
       this.currentLang = lang;
       this.isChanging = false;
+      this.cdr.markForCheck();
     });
   }
 

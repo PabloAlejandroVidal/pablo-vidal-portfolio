@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslationService } from '../../core/services/translation.service';
-import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent {
   public translation = inject(TranslationService);

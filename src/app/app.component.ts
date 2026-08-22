@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { TranslationService } from './core/services/translation.service';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
@@ -9,6 +9,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
   imports: [RouterOutlet, RouterModule, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   constructor() {}

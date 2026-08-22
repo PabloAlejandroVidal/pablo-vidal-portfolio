@@ -10,6 +10,7 @@ import { TranslationService } from '../../core/services/translation.service';
   imports: [CommonModule, RouterModule],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
   projects: Project[] = PROJECTS;

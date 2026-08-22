@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, firstValueFrom, map } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 
 type Translations = Record<string, string>;
 
 // Tipos de idioma soportados
-export type LangCode = 'es' | 'en' | 'pt' | 'fr' | 'fi' | 'no';
+export type LangCode = 'es' | 'en' | 'fr' | 'no';
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
   private readonly defaultLang: LangCode = 'es';

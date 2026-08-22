@@ -26,8 +26,6 @@ export const PROJECTS: Project[] = [
     responsibilitiesKey: 'projects.items.debAndLopers.responsibilities',
     year: '2025',
     techStack: ['Angular', 'Ionic', 'Supabase', 'Firebase', 'TypeScript'],
-    liveUrl: 'laboratorio-4-13a5b.web.app',    // ajustás vos
-    repoUrl: 'https://github.com/tu-usuario/debAndLopers'
   },
   {
     id: 'clinicaOnline',
@@ -38,7 +36,7 @@ export const PROJECTS: Project[] = [
     responsibilitiesKey: 'projects.items.clinicaOnline.responsibilities',
     year: '2025',
     techStack: ['Angular', 'Firebase', 'Firestore'],
-    liveUrl: 'labo4-c2-tp2.web.app',
+    liveUrl: 'https://labo4-c2-tp2.web.app',
     repoUrl: 'https://github.com/PabloAlejandroVidal/Labo4-C2-TP2'
   },
   {
@@ -50,7 +48,7 @@ export const PROJECTS: Project[] = [
     responsibilitiesKey: 'projects.items.salaDeJuegos.responsibilities',
     year: '2025',
     techStack: ['Angular', 'Firebase', 'Firestore'],
-    liveUrl: 'laboratorio-4-13a5b.web.app/',
+    liveUrl: 'https://laboratorio-4-13a5b.web.app/',
     repoUrl: 'https://github.com/PabloAlejandroVidal/Labo4-SalaDeJuegos-Angular'
   },
   {

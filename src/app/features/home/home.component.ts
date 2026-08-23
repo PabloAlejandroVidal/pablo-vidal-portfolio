@@ -30,7 +30,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private currentRoute = '/';
   private targetRoute = '/';
   private skipNextRouteScroll = false;
-  private readonly debugEnabled = true;
   readonly projectsReady = signal(false);
   readonly aboutReady = signal(false);
   readonly contactReady = signal(false);
@@ -43,18 +42,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.route.params.subscribe((params) => {
       const section = params['section'] ?? 'home';
       this.currentRoute = section === 'home' ? '/' : `/${section}`;
-      this.debug('route received', {
-        section,
-        currentRoute: this.currentRoute,
-        skipNextRouteScroll: this.skipNextRouteScroll,
-      });
       if (this.skipNextRouteScroll) {
         this.skipNextRouteScroll = false;
-        this.debug('route scroll skipped: navigation came from user scroll');
         return;
       }
       if (section !== this.activeSectionId) {
-        this.debug('route requests programmatic scroll', { section });
         requestAnimationFrame(() => this.scrollToSection(section));
       }
     });
@@ -83,7 +75,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   private scheduleActiveSectionUpdate(): void {
     if (this.isProgrammaticScroll) {
-      this.debug('scroll event ignored: programmatic scroll');
       return;
     }
     window.clearTimeout(this.alignScrollTimer);
@@ -117,30 +108,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
     this.activeSectionId = currentSection.id;
     this.targetRoute = currentSection.dataset['route'] ?? '/';
-    this.debug('active section updated', {
-      section: currentSection.id,
-      targetRoute: this.targetRoute,
-    });
     this.updateRouteFromScroll();
   }
 
   private updateRouteFromScroll(): void {
     if (!this.isProgrammaticScroll && this.targetRoute !== this.currentRoute) {
       this.skipNextRouteScroll = true;
-      this.debug('route changing from user scroll', {
-        from: this.currentRoute,
-        to: this.targetRoute,
-      });
       this.router.navigateByUrl(this.targetRoute, { replaceUrl: true });
       const sectionId = this.targetRoute === '/' ? 'home' : this.targetRoute.slice(1);
       this.pendingAlignmentSectionId = sectionId;
       this.schedulePendingAlignment();
       return;
     }
-    this.debug('route unchanged after scroll', {
-      currentRoute: this.currentRoute,
-      targetRoute: this.targetRoute,
-    });
   }
 
   private schedulePendingAlignment(): void {
@@ -151,7 +130,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.alignScrollTimer = window.setTimeout(() => {
       if (this.pendingAlignmentSectionId !== sectionId) return;
       this.pendingAlignmentSectionId = undefined;
-      this.debug('delayed section alignment', { sectionId });
       this.scrollToSection(sectionId);
     }, 200);
   }
@@ -165,28 +143,16 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private scrollToSection(sectionId: string): void {
     const target = document.getElementById(sectionId);
     if (!target) {
-      this.debug('programmatic scroll target not found', { sectionId });
       return;
     }
 
     this.isProgrammaticScroll = true;
-    this.debug('programmatic scroll started', { sectionId });
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.setTimeout(() => {
       this.isProgrammaticScroll = false;
       this.updateActiveSection();
       this.targetRoute = sectionId === 'home' ? '/' : `/${sectionId}`;
-      this.debug('programmatic scroll ended', {
-        sectionId,
-        currentRoute: this.currentRoute,
-        targetRoute: this.targetRoute,
-      });
     }, 1000);
-  }
-
-  private debug(message: string, details?: Record<string, unknown>): void {
-    if (!this.debugEnabled) return;
-    console.log(`[landing-debug] ${message}`, details ?? '');
   }
 
   ngOnDestroy(): void {
@@ -195,6 +161,5 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     window.removeEventListener('scroll', this.onWindowScroll);
     window.clearTimeout(this.alignScrollTimer);
     this.pendingAlignmentSectionId = undefined;
-    console.log('[landing-debug] ngOnDestroy');
   }
 }

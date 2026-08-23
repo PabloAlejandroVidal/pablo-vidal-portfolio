@@ -1,15 +1,29 @@
-import { Routes } from '@angular/router';
+import { Routes, UrlMatchResult, UrlSegment } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
-import { ProjectsComponent } from './features/projects/projects.component';
-import { AboutComponent } from './features/about/about.component';
-import { ContactComponent } from './features/contact/contact.component';
-import { ProjectDetailComponent } from './features/projects/project-detail/project-detail.component';
+
+const landingSections = new Set(['projects', 'about', 'contact']);
+
+const landingMatcher = (segments: UrlSegment[]): UrlMatchResult | null => {
+  if (segments.length === 0) {
+    return { consumed: [] };
+  }
+
+  const section = segments[0].path;
+  if (segments.length === 1 && landingSections.has(section)) {
+    return {
+      consumed: segments,
+      posParams: { section: segments[0] },
+    };
+  }
+
+  return null;
+};
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'projects/:id', component: ProjectDetailComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'projects/:id', loadComponent: () =>
+    import('./features/projects/project-detail/project-detail.component')
+      .then((m) => m.ProjectDetailComponent)
+  },
+  { matcher: landingMatcher, component: HomeComponent },
   { path: '**', redirectTo: '' },
 ];

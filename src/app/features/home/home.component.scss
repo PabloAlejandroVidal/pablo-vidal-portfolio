@@ -42,3 +42,32 @@
     gap: 0.9rem;
   }
 }
+.home__section {
+  min-height: calc(100vh - 5rem);
+  display: flex;
+  align-items: center;
+  padding-block: 4rem;
+  scroll-margin-top: 5rem;
+  opacity: 0.42;
+  filter: blur(4px);
+  transform: scale(0.985);
+  transition:
+    opacity .7s ease,
+    filter .7s ease,
+    transform 1s ease;
+}
+
+.home__section--active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.home__section > * {
+  width: 100%;
+}
+
+.home__section-placeholder {
+  min-height: 20rem;
+  width: 100%;
+}

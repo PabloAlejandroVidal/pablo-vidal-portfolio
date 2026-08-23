@@ -1,6 +1,6 @@
 <ng-container *ngIf="language$ | async">
 </ng-container>
-<section class="home u-page">
+<section id="home" data-route="/" class="home home__section home__section--active u-page">
   <div class="home__hero">
     <p class="home__kicker u-text-accent">
       {{ translation.t('home.hero.kicker') }}
@@ -39,4 +39,28 @@
       {{ translation.t('home.highlight.body') }}
     </p>
   </div>
+</section>
+
+<section id="projects" data-route="/projects" class="home__section">
+  @defer (when projectsReady()) {
+    <app-projects></app-projects>
+  } @placeholder {
+    <div class="home__section-placeholder" aria-hidden="true"></div>
+  }
+</section>
+
+<section id="about" data-route="/about" class="home__section">
+  @defer (when aboutReady()) {
+    <app-about></app-about>
+  } @placeholder {
+    <div class="home__section-placeholder" aria-hidden="true"></div>
+  }
+</section>
+
+<section id="contact" data-route="/contact" class="home__section">
+  @defer (when contactReady()) {
+    <app-contact></app-contact>
+  } @placeholder {
+    <div class="home__section-placeholder" aria-hidden="true"></div>
+  }
 </section>

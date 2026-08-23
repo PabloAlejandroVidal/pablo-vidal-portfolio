@@ -27,6 +27,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private pendingAlignmentSectionId?: string;
   private sections: HTMLElement[] = [];
   private isProgrammaticScroll = false;
+  private programmaticTarget?: HTMLElement;
+  private programmaticScrollTimer?: number;
   private currentRoute = '/';
   private targetRoute = '/';
   private skipNextRouteScroll = false;
@@ -75,6 +77,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   private scheduleActiveSectionUpdate(): void {
     if (this.isProgrammaticScroll) {
+      this.finishProgrammaticScrollIfAtTarget();
       return;
     }
     window.clearTimeout(this.alignScrollTimer);
@@ -147,12 +150,33 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     }
 
     this.isProgrammaticScroll = true;
+    this.programmaticTarget = target;
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    window.setTimeout(() => {
-      this.isProgrammaticScroll = false;
-      this.updateActiveSection();
-      this.targetRoute = sectionId === 'home' ? '/' : `/${sectionId}`;
-    }, 1000);
+    window.clearTimeout(this.programmaticScrollTimer);
+    this.programmaticScrollTimer = window.setTimeout(
+      () => this.finishProgrammaticScroll(),
+      1200,
+    );
+  }
+
+  private finishProgrammaticScrollIfAtTarget(): void {
+    if (!this.programmaticTarget) return;
+
+    const targetTop = this.programmaticTarget.getBoundingClientRect().top;
+    const scrollMarginTop = parseFloat(
+      getComputedStyle(this.programmaticTarget).scrollMarginTop,
+    ) || 0;
+    if (Math.abs(targetTop - scrollMarginTop) <= 2) {
+      this.finishProgrammaticScroll();
+    }
+  }
+
+  private finishProgrammaticScroll(): void {
+    window.clearTimeout(this.programmaticScrollTimer);
+    this.programmaticScrollTimer = undefined;
+    this.isProgrammaticScroll = false;
+    this.programmaticTarget = undefined;
+    this.updateActiveSection();
   }
 
   ngOnDestroy(): void {
@@ -160,6 +184,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.preloadObservers.forEach((observer) => observer.disconnect());
     window.removeEventListener('scroll', this.onWindowScroll);
     window.clearTimeout(this.alignScrollTimer);
+    window.clearTimeout(this.programmaticScrollTimer);
     this.pendingAlignmentSectionId = undefined;
   }
 }

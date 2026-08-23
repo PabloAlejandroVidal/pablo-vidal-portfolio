@@ -29,6 +29,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private isProgrammaticScroll = false;
   private programmaticTarget?: HTMLElement;
   private programmaticScrollTimer?: number;
+  private readonly routeDebug = true;
   private currentRoute = '/';
   private targetRoute = '/';
   private skipNextRouteScroll = false;
@@ -44,11 +45,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.route.params.subscribe((params) => {
       const section = params['section'] ?? 'home';
       this.currentRoute = section === 'home' ? '/' : `/${section}`;
+      this.routeLog('route params received', {
+        section,
+        currentRoute: this.currentRoute,
+        skipNextRouteScroll: this.skipNextRouteScroll,
+      });
       if (this.skipNextRouteScroll) {
         this.skipNextRouteScroll = false;
+        this.routeLog('route scroll skipped', { reason: 'manual scroll navigation' });
         return;
       }
       if (section !== this.activeSectionId) {
+        this.routeLog('route requests programmatic scroll', { section });
         requestAnimationFrame(() => this.scrollToSection(section));
       }
     });
@@ -120,6 +128,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       this.router.navigateByUrl(this.targetRoute, { replaceUrl: true });
       const sectionId = this.targetRoute === '/' ? 'home' : this.targetRoute.slice(1);
       this.pendingAlignmentSectionId = sectionId;
+      this.routeLog('manual scroll navigation', {
+        from: this.currentRoute,
+        to: this.targetRoute,
+        alignmentDelayMs: 200,
+      });
       this.schedulePendingAlignment();
       return;
     }
@@ -151,10 +164,19 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
     this.isProgrammaticScroll = true;
     this.programmaticTarget = target;
+    this.routeLog('programmatic scroll started', {
+      sectionId,
+      currentScrollY: window.scrollY,
+      targetTop: target.getBoundingClientRect().top,
+      scrollMarginTop: getComputedStyle(target).scrollMarginTop,
+    });
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.clearTimeout(this.programmaticScrollTimer);
     this.programmaticScrollTimer = window.setTimeout(
-      () => this.finishProgrammaticScroll(),
+      () => {
+        this.routeLog('programmatic scroll fallback timeout', { timeoutMs: 1200 });
+        this.finishProgrammaticScroll();
+      },
       1200,
     );
   }
@@ -166,7 +188,13 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     const scrollMarginTop = parseFloat(
       getComputedStyle(this.programmaticTarget).scrollMarginTop,
     ) || 0;
+    this.routeLog('programmatic scroll position check', {
+      targetTop,
+      scrollMarginTop,
+      difference: targetTop - scrollMarginTop,
+    });
     if (Math.abs(targetTop - scrollMarginTop) <= 2) {
+      this.routeLog('programmatic scroll reached target');
       this.finishProgrammaticScroll();
     }
   }
@@ -176,7 +204,14 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.programmaticScrollTimer = undefined;
     this.isProgrammaticScroll = false;
     this.programmaticTarget = undefined;
+    this.routeLog('programmatic scroll finished', { currentScrollY: window.scrollY });
     this.updateActiveSection();
+  }
+
+  private routeLog(message: string, details?: Record<string, unknown>): void {
+    if (this.routeDebug) {
+      console.log(`[landing-route-debug] ${message}`, details ?? '');
+    }
   }
 
   ngOnDestroy(): void {

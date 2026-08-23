@@ -188,12 +188,15 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     const scrollMarginTop = parseFloat(
       getComputedStyle(this.programmaticTarget).scrollMarginTop,
     ) || 0;
+    const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+    const isAtScrollBoundary =
+      window.scrollY <= 1 || window.scrollY >= maxScrollY - 1;
     this.routeLog('programmatic scroll position check', {
       targetTop,
       scrollMarginTop,
       difference: targetTop - scrollMarginTop,
     });
-    if (Math.abs(targetTop - scrollMarginTop) <= 2) {
+    if (Math.abs(targetTop - scrollMarginTop) <= 10 || isAtScrollBoundary) {
       this.routeLog('programmatic scroll reached target');
       this.finishProgrammaticScroll();
     }

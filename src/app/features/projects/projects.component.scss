@@ -68,31 +68,6 @@
     color: var(--color-text-soft, rgba(255, 255, 255, 0.78));
   }
 
-  &__item-meta {
-    margin: 0 0 0.4rem;
-    font-size: 0.86rem;
-    color: var(--color-text-muted, rgba(255, 255, 255, 0.65));
-
-    strong {
-      font-weight: 600;
-    }
-  }
-
-  &__item-meta-separator {
-    margin: 0 0.4rem;
-    opacity: 0.6;
-  }
-
-  &__item-resp {
-    margin: 0 0 0.75rem;
-    font-size: 0.86rem;
-    color: var(--color-text-muted, rgba(255, 255, 255, 0.7));
-
-    strong {
-      font-weight: 600;
-    }
-  }
-
   &__item-tags {
     display: flex;
     flex-wrap: wrap;

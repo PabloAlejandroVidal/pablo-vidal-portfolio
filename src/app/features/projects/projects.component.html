@@ -28,23 +28,6 @@
         {{ translation.t(p.shortDescriptionKey) }}
       </p>
 
-      <!-- Meta info -->
-      <p class="projects__item-meta">
-        <strong>{{ translation.t('projects.common.role') }}:</strong>
-        {{ translation.t(p.roleKey) }}
-
-        <span class="projects__item-meta-separator">•</span>
-
-        <strong>{{ translation.t('projects.common.context') }}:</strong>
-        {{ translation.t(p.contextKey) }}
-      </p>
-
-      <!-- Responsabilidades -->
-      <p class="projects__item-resp">
-        <strong>{{ translation.t('projects.common.responsibilities') }}:</strong>
-        {{ translation.t(p.responsibilitiesKey) }}
-      </p>
-
       <!-- Tech stack -->
       <div class="projects__item-tags">
         <span class="projects__tag" *ngFor="let tech of p.techStack">{{ tech }}</span>

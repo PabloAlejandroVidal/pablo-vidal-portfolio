@@ -25,6 +25,9 @@
   color: var(--color-text-soft);
   border-top: 1px solid var(--color-border-subtle);
   background: #05060a;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .l-footer__text {

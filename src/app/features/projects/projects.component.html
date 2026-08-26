@@ -13,7 +13,11 @@
   <!-- Lista -->
   <div class="projects__list u-mt-md" *ngIf="projects.length; else empty">
 
-    <article class="projects__item c-card c-card--soft" *ngFor="let p of projects">
+    <article
+      class="projects__item c-card c-card--soft"
+      *ngFor="let p of projects"
+      [style.--project-bg-image]="p.backgroundImage ? 'url(' + p.backgroundImage + ')' : 'none'"
+    >
 
       <!-- Cabecera -->
       <header class="projects__item-header">

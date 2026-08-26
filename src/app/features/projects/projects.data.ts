@@ -1,5 +1,5 @@
 // src/app/features/projects/projects.data.ts
-export type ProjectId = 'debAndLopers' | 'clinicaOnline' | 'portfolio' | 'salaDeJuegos';
+export type ProjectId = 'debAndLopers' | 'laComanda' | 'clinicaOnline' | 'salaDeJuegos';
 
 export interface Project {
   id: ProjectId;
@@ -10,6 +10,7 @@ export interface Project {
   contextKey: string;       // contexto (ej: "Proyecto académico UTN")
   responsibilitiesKey: string; // bullet general “Responsabilidades principales”
   techStack: string[];      // tags visibles, sin i18n (Angular, Ionic, etc.)
+  backgroundImage?: string; // imagen opcional para el fondo de la tarjeta
 
   year: string;             // "2025", "2024-2025"
   liveUrl?: string;
@@ -24,8 +25,21 @@ export const PROJECTS: Project[] = [
     roleKey: 'projects.items.debAndLopers.role',
     contextKey: 'projects.items.debAndLopers.context',
     responsibilitiesKey: 'projects.items.debAndLopers.responsibilities',
-    year: '2025',
-    techStack: ['Angular', 'Ionic', 'Supabase', 'Firebase', 'TypeScript'],
+    year: '2026',
+    techStack: ['Angular', 'Ionic', 'TypeScript', 'Supabase', 'PostgreSQL', 'Roles', 'Estados'],
+    backgroundImage: '/assets/debandlopers-bg.png',
+  },
+  {
+    id: 'laComanda',
+    titleKey: 'projects.items.laComanda.title',
+    shortDescriptionKey: 'projects.items.laComanda.shortDescription',
+    roleKey: 'projects.items.laComanda.role',
+    contextKey: 'projects.items.laComanda.context',
+    responsibilitiesKey: 'projects.items.laComanda.responsibilities',
+    year: '2026',
+    backgroundImage: '/assets/lacomanda-bg.png',
+    techStack: ['PHP 8', 'Slim Framework', 'MySQL', 'PHP-DI', 'dotenv', 'REST API'],
+    repoUrl: 'https://github.com/PabloAlejandroVidal/LaComanda-Slim-API',
   },
   {
     id: 'clinicaOnline',
@@ -36,8 +50,9 @@ export const PROJECTS: Project[] = [
     responsibilitiesKey: 'projects.items.clinicaOnline.responsibilities',
     year: '2025',
     techStack: ['Angular', 'Firebase', 'Firestore'],
+    backgroundImage: '/assets/clinica-bg.png',
     liveUrl: 'https://labo4-c2-tp2.web.app',
-    repoUrl: 'https://github.com/PabloAlejandroVidal/Labo4-C2-TP2'
+    repoUrl: 'https://github.com/PabloAlejandroVidal/Labo4-C2-TP2',
   },
   {
     id: 'salaDeJuegos',
@@ -48,19 +63,8 @@ export const PROJECTS: Project[] = [
     responsibilitiesKey: 'projects.items.salaDeJuegos.responsibilities',
     year: '2025',
     techStack: ['Angular', 'Firebase', 'Firestore'],
+    backgroundImage: '/assets/saladejuegos-bg.png',
     liveUrl: 'https://laboratorio-4-13a5b.web.app/',
     repoUrl: 'https://github.com/PabloAlejandroVidal/Labo4-SalaDeJuegos-Angular'
   },
-  {
-    id: 'portfolio',
-    titleKey: 'projects.items.portfolio.title',
-    shortDescriptionKey: 'projects.items.portfolio.shortDescription',
-    roleKey: 'projects.items.portfolio.role',
-    contextKey: 'projects.items.portfolio.context',
-    responsibilitiesKey: 'projects.items.portfolio.responsibilities',
-    year: '2025',
-    techStack: ['Angular', 'TypeScript', 'GitHub Pages'],
-    liveUrl: 'https://pabloalejandrovidal.github.io/pablo-vidal-portfolio/',
-    repoUrl: 'https://github.com/PabloAlejandroVidal/pablo-vidal-portfolio'
-  }
 ];

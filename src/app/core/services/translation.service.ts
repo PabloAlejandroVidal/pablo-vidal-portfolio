@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 
@@ -16,10 +17,14 @@ export class TranslationService {
   private translations: Translations = {};
   private cache = new Map<LangCode, Translations>();
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    @Inject(DOCUMENT) private document: Document,
+  ) {
     const savedLang = this.getPersistedLang();
     const initialLang = savedLang ?? this.defaultLang;
 
+    this.updateDocumentLanguage(initialLang);
     this.loadLanguage(initialLang);
   }
 
@@ -52,6 +57,7 @@ export class TranslationService {
       this.translations = this.cache.get(lang)!;
       this.currentLang$.next(lang);
       this.persistLang(lang);
+      this.updateDocumentLanguage(lang);
       return;
     }
 
@@ -59,11 +65,16 @@ export class TranslationService {
       await this.loadJson(lang);
       this.currentLang$.next(lang);
       this.persistLang(lang);
+      this.updateDocumentLanguage(lang);
     } catch {
       if (lang !== this.defaultLang) {
         await this.loadLanguage(this.defaultLang);
       }
     }
+  }
+
+  private updateDocumentLanguage(lang: LangCode): void {
+    this.document.documentElement.lang = lang;
   }
 
   async loadJson(lang: LangCode) {

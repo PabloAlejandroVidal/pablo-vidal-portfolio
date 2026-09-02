@@ -36,6 +36,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/pablo-vidal-portfolio/",
               "budgets": [
                 {
                   "type": "initial",
@@ -94,9 +95,6 @@
             ],
             "scripts": []
           }
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

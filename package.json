@@ -5,9 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:pages": "ng build --configuration production && node scripts/prepare-pages.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production --base-href \"/pablo-vidal-portfolio/\" && npx angular-cli-ghpages --dir=dist/pablo-vidal-portfolio/browser --branch=gh-pages"
+    "deploy": "npm run build:pages && npx angular-cli-ghpages --dir=dist/pablo-vidal-portfolio/browser --branch=gh-pages"
   },
   "private": true,
   "dependencies": {

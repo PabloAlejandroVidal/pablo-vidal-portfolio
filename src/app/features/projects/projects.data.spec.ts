@@ -19,6 +19,6 @@ describe('PROJECTS', () => {
   });
 
   it('does not include the portfolio as a featured project', () => {
-    expect(PROJECTS.some((project) => project.id === 'portfolio')).toBeFalse();
+    expect(PROJECTS.some((project) => String(project.id) === 'portfolio')).toBeFalse();
   });
 });

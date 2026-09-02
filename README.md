@@ -75,13 +75,18 @@ Disponible en:
 
 ### GitHub Pages
 
-ng build --output-path docs --base-href /pablo-vidal-portfolio/
-git add .
-git commit -m "Deploy"
-git push
+npm run deploy
 
-Luego:
-Settings → Pages → Branch: main → Folder: /docs
+El script construye la aplicación con la configuración `production`, valida el
+`base href`, genera `404.html` y publica `dist/pablo-vidal-portfolio/browser`
+en la rama `gh-pages`.
+
+En GitHub, la fuente de Pages debe estar configurada como:
+Settings → Pages → Deploy from a branch → `gh-pages` → `/ (root)`.
+
+La social preview se publica como
+`src/assets/pablo-vidal-social-preview.webp` y se referencia desde Open Graph
+y Twitter/X mediante la URL pública bajo `/pablo-vidal-portfolio/assets/`.
 
 ---
 
